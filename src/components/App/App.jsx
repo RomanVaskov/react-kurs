@@ -9,30 +9,23 @@ import Settings from "../Settings/Settings";
 import News from "../News/News";
 import Music from "../Music/Music";
 
-const App = ({ dialogsData, messagesData, postsData }) => {
-  let props = { dialogsData, messagesData, postsData };
-  console.log(props);
+const App = ({ state }) => {
   return (
     <BrowserRouter>
       <div className={style.app_wrapper}>
         <Header />
-        <Navbar />
+        <Navbar state={state} />
         <div className={style.app_wrapper_content}>
           <Route
             path="/profile"
             render={() => {
-              return <Profile postsData={props.postsData} />;
+              return <Profile state={state} />;
             }}
           />
           <Route
             path="/dialogs"
             render={() => {
-              return (
-                <Dialogs
-                  dialogsData={props.dialogsData}
-                  messagesData={props.messagesData}
-                />
-              );
+              return <Dialogs state={state} />;
             }}
           />
           <Route path="/news" component={News} />

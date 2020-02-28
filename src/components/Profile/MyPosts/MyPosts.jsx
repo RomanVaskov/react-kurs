@@ -5,7 +5,12 @@ import Post from "./Post/Post";
 const MyPosts = ({ postsData }) => {
   let postsElements = postsData.map(item => {
     return (
-      <Post message={item.message} likesCount={item.likesCount} id={item.id} />
+      <Post
+        key={item.id}
+        message={item.message}
+        likesCount={item.likesCount}
+        id={item.id}
+      />
     );
   });
 

@@ -3,11 +3,11 @@ import style from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({ postsData }) => {
+const Profile = ({ state }) => {
   return (
     <div className={style.content}>
       <ProfileInfo />
-      <MyPosts postsData={postsData} />
+      <MyPosts postsData={state.profilePage.postsData} />
     </div>
   );
 };

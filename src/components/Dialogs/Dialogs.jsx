@@ -3,12 +3,12 @@ import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import DialogText from "./DialogText/DialogText";
 
-const Dialogs = ({ dialogsData, messagesData }) => {
-  let dialogsElements = dialogsData.map(item => {
+const Dialogs = ({ state }) => {
+  let dialogsElements = state.dialogsPage.dialogsData.map(item => {
     return <DialogItem name={item.name} id={item.id} />;
   });
 
-  let messagesElements = messagesData.map(item => {
+  let messagesElements = state.dialogsPage.messagesData.map(item => {
     return <DialogText text={item.message} id={item.id} />;
   });
 

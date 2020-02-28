@@ -1,4 +1,4 @@
-.nav {
+.bg {
     grid-area: n;
     background-color: #80ffff;
 }
@@ -15,4 +15,14 @@
 .item .activeLink {
     color: red;
     font-weight: 800;
+}
+
+.friends {
+    padding: 0 5px;
+}
+
+.friends .friends_item {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
