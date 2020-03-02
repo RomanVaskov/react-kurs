@@ -3,7 +3,7 @@ import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = ({ postsData }) => {
-  let postsElements = postsData.map(item => {
+  const postsElements = postsData.map(item => {
     return (
       <Post
         key={item.id}
@@ -14,15 +14,22 @@ const MyPosts = ({ postsData }) => {
     );
   });
 
+  const NewPostElement = React.createRef();
+
+  const addPost = () => {
+    let text = NewPostElement.current.value;
+    alert(text);
+  };
+
   return (
     <div>
       <h3>My Posts</h3>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea ref={NewPostElement}></textarea>
         </div>
         <div>
-          <button>Add post</button>
+          <button onClick={addPost}>Add post</button>
         </div>
       </div>
       <div className={style.posts}>{postsElements}</div>

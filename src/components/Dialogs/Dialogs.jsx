@@ -12,10 +12,20 @@ const Dialogs = ({ state }) => {
     return <DialogText text={item.message} id={item.id} />;
   });
 
+  let PostText = React.createRef();
+  const addPost = () => {
+    let text = PostText.current.value;
+    alert(text);
+  };
+
   return (
     <div className={style.dialogs}>
       <div className={style.dialogsItems}>{dialogsElements}</div>
       <div className={style.messages}>{messagesElements}</div>
+      <div>
+        <textarea ref={PostText}></textarea>
+        <button onClick={addPost}>Add Post</button>
+      </div>
     </div>
   );
 };
