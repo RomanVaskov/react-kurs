@@ -5,11 +5,11 @@ import DialogText from "./DialogText/DialogText";
 
 const Dialogs = ({ state }) => {
   let dialogsElements = state.dialogsPage.dialogsData.map(item => {
-    return <DialogItem name={item.name} id={item.id} />;
+    return <DialogItem name={item.name} id={item.id} key={item.id} />;
   });
 
   let messagesElements = state.dialogsPage.messagesData.map(item => {
-    return <DialogText text={item.message} id={item.id} />;
+    return <DialogText text={item.message} id={item.id} key={item.id} />;
   });
 
   let PostText = React.createRef();

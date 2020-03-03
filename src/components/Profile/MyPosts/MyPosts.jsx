@@ -2,7 +2,7 @@ import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({ postsData }) => {
+const MyPosts = ({ postsData, addPost, newPostText, updateNewPostText }) => {
   const postsElements = postsData.map(item => {
     return (
       <Post
@@ -14,11 +14,15 @@ const MyPosts = ({ postsData }) => {
     );
   });
 
-  const NewPostElement = React.createRef();
+  let NewPostElement = React.createRef();
 
-  const addPost = () => {
+  const addPostItem = () => {
+    addPost();
+  };
+
+  const onPostChange = () => {
     let text = NewPostElement.current.value;
-    alert(text);
+    updateNewPostText(text);
   };
 
   return (
@@ -26,10 +30,14 @@ const MyPosts = ({ postsData }) => {
       <h3>My Posts</h3>
       <div>
         <div>
-          <textarea ref={NewPostElement}></textarea>
+          <textarea
+            ref={NewPostElement}
+            value={newPostText}
+            onChange={onPostChange}
+          ></textarea>
         </div>
         <div>
-          <button onClick={addPost}>Add post</button>
+          <button onClick={addPostItem}>Add post</button>
         </div>
       </div>
       <div className={style.posts}>{postsElements}</div>
