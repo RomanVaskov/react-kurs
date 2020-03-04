@@ -9,7 +9,7 @@ import Settings from "../Settings/Settings";
 import News from "../News/News";
 import Music from "../Music/Music";
 
-const App = ({ state, addPost, updateNewPostText }) => {
+const App = ({ state, dispatch }) => {
   return (
     <BrowserRouter>
       <div className={style.app_wrapper}>
@@ -19,13 +19,7 @@ const App = ({ state, addPost, updateNewPostText }) => {
           <Route
             path="/profile"
             render={() => {
-              return (
-                <Profile
-                  state={state}
-                  addPost={addPost}
-                  updateNewPostText={updateNewPostText}
-                />
-              );
+              return <Profile state={state} dispatch={dispatch} />;
             }}
           />
           <Route

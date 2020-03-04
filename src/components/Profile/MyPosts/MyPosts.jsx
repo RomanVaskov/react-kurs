@@ -2,7 +2,13 @@ import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({ postsData, addPost, newPostText, updateNewPostText }) => {
+const MyPosts = ({
+  postsData,
+  newPostText,
+  addPost,
+  updateNewPostText,
+  dispatch
+}) => {
   const postsElements = postsData.map(item => {
     return (
       <Post
@@ -17,12 +23,14 @@ const MyPosts = ({ postsData, addPost, newPostText, updateNewPostText }) => {
   let NewPostElement = React.createRef();
 
   const addPostItem = () => {
-    addPost();
+    // addPost();
+    dispatch({ type: "ADD-POST" });
   };
 
   const onPostChange = () => {
     let text = NewPostElement.current.value;
-    updateNewPostText(text);
+    // updateNewPostText(text);
+    dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
   };
 
   return (
