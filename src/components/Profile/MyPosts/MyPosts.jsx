@@ -1,14 +1,12 @@
 import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator
+} from "../../../services/db";
 
-const MyPosts = ({
-  postsData,
-  newPostText,
-  addPost,
-  updateNewPostText,
-  dispatch
-}) => {
+const MyPosts = ({ postsData, newPostText, dispatch }) => {
   const postsElements = postsData.map(item => {
     return (
       <Post
@@ -23,14 +21,12 @@ const MyPosts = ({
   let NewPostElement = React.createRef();
 
   const addPostItem = () => {
-    // addPost();
-    dispatch({ type: "ADD-POST" });
+    dispatch(addPostActionCreator());
   };
 
   const onPostChange = () => {
     let text = NewPostElement.current.value;
-    // updateNewPostText(text);
-    dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
+    dispatch(updateNewPostTextActionCreator(text));
   };
 
   return (
