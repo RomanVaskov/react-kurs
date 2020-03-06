@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator
-} from "../../../services/db";
+} from "../../../redux/profile-reducer";
 
 const MyPosts = ({ postsData, newPostText, dispatch }) => {
   const postsElements = postsData.map(item => {

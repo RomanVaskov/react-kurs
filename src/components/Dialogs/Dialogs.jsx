@@ -5,7 +5,7 @@ import DialogText from "./DialogText/DialogText";
 import {
   updateNewMessageBodyCreator,
   sendMessageCreator
-} from "../../services/db";
+} from "../../redux/dialogs-reducer";
 
 const Dialogs = ({ state, dispatch }) => {
   let dialogsElements = state.dialogsPage.dialogsData.map(item => {
