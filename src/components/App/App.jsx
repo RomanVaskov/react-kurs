@@ -25,7 +25,7 @@ const App = ({ state, dispatch }) => {
           <Route
             path="/dialogs"
             render={() => {
-              return <Dialogs state={state} />;
+              return <Dialogs state={state} dispatch={dispatch} />;
             }}
           />
           <Route path="/news" component={News} />
