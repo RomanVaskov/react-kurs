@@ -3,7 +3,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import style from "./App.module.css";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
-import Dialogs from "../Dialogs/Dialogs";
+import DialogsContainer from "../Dialogs/DialogsContainer";
 import Profile from "../Profile/Profile";
 import Settings from "../Settings/Settings";
 import News from "../News/News";
@@ -25,7 +25,7 @@ const App = ({ state, dispatch }) => {
           <Route
             path="/dialogs"
             render={() => {
-              return <Dialogs state={state} dispatch={dispatch} />;
+              return <DialogsContainer state={state} dispatch={dispatch} />;
             }}
           />
           <Route path="/news" component={News} />
