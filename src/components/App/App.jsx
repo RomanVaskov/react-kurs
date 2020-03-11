@@ -9,23 +9,23 @@ import Settings from "../Settings/Settings";
 import News from "../News/News";
 import Music from "../Music/Music";
 
-const App = ({ state, dispatch }) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className={style.app_wrapper}>
         <Header />
-        <Navbar state={state} />
+        <Navbar />
         <div className={style.app_wrapper_content}>
           <Route
             path="/profile"
             render={() => {
-              return <Profile state={state} dispatch={dispatch} />;
+              return <Profile />;
             }}
           />
           <Route
             path="/dialogs"
             render={() => {
-              return <DialogsContainer state={state} dispatch={dispatch} />;
+              return <DialogsContainer />;
             }}
           />
           <Route path="/news" component={News} />

@@ -2,7 +2,7 @@ import React from "react";
 import FriendItem from "./FriendItem/FriendItem";
 
 const Friends = ({ state }) => {
-  let friend = state.sidebar.friends.map(item => {
+  let friend = state.friends.map(item => {
     return (
       <FriendItem
         key={item.id}
