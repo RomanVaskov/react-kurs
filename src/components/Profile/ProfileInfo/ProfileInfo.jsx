@@ -1,7 +1,11 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
+import Preloader from "../../../assets/img/spinner.svg";
 
-const ProfileInfo = () => {
+const ProfileInfo = props => {
+  if (!props.profile) {
+    return <img alt="img" src={Preloader} />;
+  }
   return (
     <div>
       <div>
@@ -11,7 +15,13 @@ const ProfileInfo = () => {
           alt="Природа"
         />
       </div>
-      <div>ava + description</div>
+      <div>
+        <img src={props.profile.photos.small} alt="avatar" />
+        <div>
+          <div>About Me: {props.profile.aboutMe}</div>
+          <div>About Job: {props.profile.lookingForAJobDescription}</div>
+        </div>
+      </div>
     </div>
   );
 };

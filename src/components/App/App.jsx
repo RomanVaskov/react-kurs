@@ -1,14 +1,14 @@
 import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
-import style from "./App.module.css";
-import Header from "../Header/Header";
-import Navbar from "../Navbar/Navbar";
+import { BrowserRouter, Route } from "react-router-dom";
 import DialogsContainer from "../Dialogs/DialogsContainer";
-import Profile from "../Profile/Profile";
-import Settings from "../Settings/Settings";
-import News from "../News/News";
+import Header from "../Header/Header";
 import Music from "../Music/Music";
+import Navbar from "../Navbar/Navbar";
+import News from "../News/News";
+import Settings from "../Settings/Settings";
 import UsersContainer from "../Users/UsersContainer";
+import style from "./App.module.css";
+import ProfileContainer from "../Profile/ProfileContainer";
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
           <Route
             path="/profile"
             render={() => {
-              return <Profile />;
+              return <ProfileContainer />;
             }}
           />
           <Route
