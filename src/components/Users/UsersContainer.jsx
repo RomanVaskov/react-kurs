@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import * as axios from "axios";
 import { connect } from "react-redux";
 import {
-  followAC,
-  unfollowAC,
-  setUsersAC,
-  setCurrentPageAC,
-  setTotalUsersCountAC,
-  setIsFetchingAC
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  setIsFetching
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../../assets/img/spinner.svg";
@@ -70,27 +70,11 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
-  return {
-    follow: userId => {
-      dispatch(followAC(userId));
-    },
-    unfollow: userId => {
-      dispatch(unfollowAC(userId));
-    },
-    setUsers: users => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: pageNumber => {
-      dispatch(setCurrentPageAC(pageNumber));
-    },
-    setTotalUsersCount: totalCount => {
-      dispatch(setTotalUsersCountAC(totalCount));
-    },
-    setIsFetching: isFetching => {
-      dispatch(setIsFetchingAC(isFetching));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  setIsFetching
+})(UsersContainer);
