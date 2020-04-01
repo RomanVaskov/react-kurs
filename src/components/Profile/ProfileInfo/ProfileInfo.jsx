@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
 import Preloader from "../../../assets/img/spinner.svg";
+import usersPhoto from "../../../assets/img/user.png";
 
 const ProfileInfo = props => {
   if (!props.profile) {
@@ -16,7 +17,13 @@ const ProfileInfo = props => {
         />
       </div>
       <div>
-        <img src={props.profile.photos.small} alt="avatar" />
+        <img
+          className={style.userImg}
+          src={
+            props.profile.photos.large ? props.profile.photos.large : usersPhoto
+          }
+          alt="avatar"
+        />
         <div>
           <div>About Me: {props.profile.aboutMe}</div>
           <div>About Job: {props.profile.lookingForAJobDescription}</div>

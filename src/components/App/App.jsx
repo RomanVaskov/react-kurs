@@ -18,7 +18,7 @@ const App = () => {
         <Navbar />
         <div className={style.app_wrapper_content}>
           <Route
-            path="/profile"
+            path="/profile/:userId?"
             render={() => {
               return <ProfileContainer />;
             }}
