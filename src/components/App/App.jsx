@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import DialogsContainer from "../Dialogs/DialogsContainer";
-import Header from "../Header/Header";
+import HeaderContainer from "../Header/HeaderContainer";
 import Music from "../Music/Music";
 import Navbar from "../Navbar/Navbar";
 import News from "../News/News";
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className={style.app_wrapper}>
-        <Header />
+        <HeaderContainer />
         <Navbar />
         <div className={style.app_wrapper_content}>
           <Route
