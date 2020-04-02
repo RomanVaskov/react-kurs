@@ -43,11 +43,14 @@ let Users = props => {
               <div>
                 {u.followed ? (
                   <button
+                    disabled={props.followingProgress.some(id => id === u.id)}
                     onClick={() => {
+                      props.setFollowingProgress(true, u.id);
                       usersApi.getUsersUnfollow(u.id).then(data => {
                         if (data.resultCode === 0) {
                           props.unfollow(u.id);
                         }
+                        props.setFollowingProgress(false, u.id);
                       });
                     }}
                   >
@@ -55,11 +58,14 @@ let Users = props => {
                   </button>
                 ) : (
                   <button
+                    disabled={props.followingProgress.some(id => id === u.id)}
                     onClick={() => {
+                      props.setFollowingProgress(true, u.id);
                       usersApi.getUsersFollow(u.id).then(data => {
                         if (data.resultCode === 0) {
                           props.follow(u.id);
                         }
+                        props.setFollowingProgress(false, u.id);
                       });
                     }}
                   >

@@ -6,7 +6,8 @@ import {
   setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  setIsFetching
+  setIsFetching,
+  setFollowingProgress
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../../assets/img/spinner.svg";
@@ -47,6 +48,8 @@ class UsersContainer extends Component {
             users={this.props.users}
             unfollow={this.props.unfollow}
             follow={this.props.follow}
+            setFollowingProgress={this.props.setFollowingProgress}
+            followingProgress={this.props.followingProgress}
           />
         )}
       </>
@@ -60,7 +63,8 @@ let mapStateToProps = state => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followingProgress: state.usersPage.followingProgress
   };
 };
 
@@ -70,5 +74,6 @@ export default connect(mapStateToProps, {
   setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  setIsFetching
+  setIsFetching,
+  setFollowingProgress
 })(UsersContainer);
