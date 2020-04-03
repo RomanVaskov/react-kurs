@@ -9,6 +9,7 @@ import Settings from "../Settings/Settings";
 import UsersContainer from "../Users/UsersContainer";
 import style from "./App.module.css";
 import ProfileContainer from "../Profile/ProfileContainer";
+import Login from "../Login/Login";
 
 const App = () => {
   return (
@@ -33,6 +34,12 @@ const App = () => {
             path="/users"
             render={() => {
               return <UsersContainer />;
+            }}
+          />
+          <Route
+            path="/login"
+            render={() => {
+              return <Login />;
             }}
           />
           <Route path="/news" component={News} />
