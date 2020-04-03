@@ -25,6 +25,7 @@ const ProfileInfo = props => {
           alt="avatar"
         />
         <div>
+          <div>Name: {props.profile.fullName}</div>
           <div>About Me: {props.profile.aboutMe}</div>
           <div>About Job: {props.profile.lookingForAJobDescription}</div>
         </div>

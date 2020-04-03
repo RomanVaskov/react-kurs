@@ -3,35 +3,20 @@ import { connect } from "react-redux";
 import {
   follow,
   unfollow,
-  setUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  setIsFetching,
-  setFollowingProgress
+  getUsers
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../../assets/img/spinner.svg";
-import { usersApi } from "../../api/api";
 
 class UsersContainer extends Component {
   componentDidMount() {
-    this.props.setIsFetching(true);
-    usersApi
-      .getUsers(this.props.currentPage, this.props.pageSize)
-      .then(data => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount / 100);
-      });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChange = pageNumber => {
     this.props.setCurrentPage(pageNumber);
-    this.props.setIsFetching(true);
-    usersApi.getUsers(pageNumber, this.props.pageSize).then(data => {
-      this.props.setIsFetching(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(pageNumber, this.props.pageSize);
   };
 
   render() {
@@ -48,7 +33,6 @@ class UsersContainer extends Component {
             users={this.props.users}
             unfollow={this.props.unfollow}
             follow={this.props.follow}
-            setFollowingProgress={this.props.setFollowingProgress}
             followingProgress={this.props.followingProgress}
           />
         )}
@@ -71,9 +55,6 @@ let mapStateToProps = state => {
 export default connect(mapStateToProps, {
   follow,
   unfollow,
-  setUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  setIsFetching,
-  setFollowingProgress
+  getUsers
 })(UsersContainer);
