@@ -3,21 +3,16 @@ import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import DialogText from "./DialogText/DialogText";
 
-const Dialogs = ({
-  sendMessage,
-  updateNewMessageBody,
-  dialogsPage,
-  isAuth
-}) => {
+const Dialogs = ({ sendMessage, updateNewMessageBody, dialogsPage }) => {
   let state = dialogsPage;
 
   let newMessageBody = state.newMessageBody;
 
-  let dialogsElements = state.dialogsData.map(item => {
+  let dialogsElements = state.dialogsData.map((item) => {
     return <DialogItem name={item.name} id={item.id} key={item.id} />;
   });
 
-  let messagesElements = state.messagesData.map(item => {
+  let messagesElements = state.messagesData.map((item) => {
     return <DialogText text={item.message} id={item.id} key={item.id} />;
   });
 
@@ -25,7 +20,7 @@ const Dialogs = ({
     sendMessage();
   };
 
-  const onNewMessageChange = e => {
+  const onNewMessageChange = (e) => {
     let body = e.target.value;
     updateNewMessageBody(body);
   };

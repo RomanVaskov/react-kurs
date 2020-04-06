@@ -4,17 +4,19 @@ import {
   follow,
   unfollow,
   setCurrentPage,
-  getUsers
+  getUsers,
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../../assets/img/spinner.svg";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 class UsersContainer extends Component {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 
-  onPageChange = pageNumber => {
+  onPageChange = (pageNumber) => {
     this.props.getUsers(pageNumber, this.props.pageSize);
   };
 
@@ -40,20 +42,23 @@ class UsersContainer extends Component {
   }
 }
 
-let mapStateToProps = state => {
+let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
-    followingProgress: state.usersPage.followingProgress
+    followingProgress: state.usersPage.followingProgress,
   };
 };
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setCurrentPage,
-  getUsers
-})(UsersContainer);
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setCurrentPage,
+    getUsers,
+  })
+)(UsersContainer);
