@@ -21,15 +21,20 @@ const ProfileInfo = (props) => {
         <img
           className={style.userImg}
           src={
-            props.profile.photos.large ? props.profile.photos.large : usersPhoto
+            !props.profile.data.photos.small
+              ? usersPhoto
+              : props.profile.data.photos.small
           }
           alt="avatar"
         />
-        <ProfileStatus status={"Hello World!!!"} />
+        <ProfileStatus
+          status={props.status}
+          updateUserStatus={props.updateUserStatus}
+        />
         <div>
-          <div>Name: {props.profile.fullName}</div>
-          <div>About Me: {props.profile.aboutMe}</div>
-          <div>About Job: {props.profile.lookingForAJobDescription}</div>
+          <div>Name: {props.profile.data.fullName}</div>
+          <div>About Me: {props.profile.data.aboutMe}</div>
+          <div>About Job: {props.profile.data.lookingForAJobDescription}</div>
         </div>
       </div>
     </div>
