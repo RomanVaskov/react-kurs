@@ -21,9 +21,9 @@ const ProfileInfo = (props) => {
         <img
           className={style.userImg}
           src={
-            !props.profile.data.photos.small
+            !props.profile.photos.small
               ? usersPhoto
-              : props.profile.data.photos.small
+              : props.profile.photos.small
           }
           alt="avatar"
         />
@@ -32,9 +32,9 @@ const ProfileInfo = (props) => {
           updateUserStatus={props.updateUserStatus}
         />
         <div>
-          <div>Name: {props.profile.data.fullName}</div>
-          <div>About Me: {props.profile.data.aboutMe}</div>
-          <div>About Job: {props.profile.data.lookingForAJobDescription}</div>
+          <div>Name: {props.profile.fullName}</div>
+          <div>About Me: {props.profile.aboutMe}</div>
+          <div>About Job: {props.profile.lookingForAJobDescription}</div>
         </div>
       </div>
     </div>
