@@ -9,7 +9,7 @@ import Settings from "../Settings/Settings";
 import UsersContainer from "../Users/UsersContainer";
 import style from "./App.module.css";
 import ProfileContainer from "../Profile/ProfileContainer";
-import Login from "../Login/Login";
+import UserLogin from "../Login/Login";
 
 const App = () => {
   return (
@@ -39,7 +39,7 @@ const App = () => {
           <Route
             path="/login"
             render={() => {
-              return <Login />;
+              return <UserLogin />;
             }}
           />
           <Route path="/news" component={News} />
