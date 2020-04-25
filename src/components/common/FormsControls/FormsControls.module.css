@@ -6,3 +6,10 @@
 .formControl.error span {
 	color: rgba(0, 26, 255, 0.582);
 }
+
+.formSummeryError {
+	display: inline-block;
+	border: 2px solid blue;
+	padding: 5px;
+	color: rgba(0, 26, 255, 0.582);
+}
