@@ -10,6 +10,14 @@ import Users from "./Users";
 import Preloader from "../../assets/img/spinner.svg";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import {
+  getAllUsers,
+  getPageSize,
+  getTotalUsersCount,
+  getCurrentPage,
+  getIsFetching,
+  getFollowingProgress,
+} from "../../redux/users-selectors";
 
 class UsersContainer extends Component {
   componentDidMount() {
@@ -44,12 +52,12 @@ class UsersContainer extends Component {
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingProgress: state.usersPage.followingProgress,
+    users: getAllUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingProgress: getFollowingProgress(state),
   };
 };
 
