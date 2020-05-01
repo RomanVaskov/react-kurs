@@ -2,7 +2,8 @@ import React from "react";
 import style from "./ProfileInfo.module.css";
 import Preloader from "../../../assets/img/spinner.svg";
 import usersPhoto from "../../../assets/img/user.png";
-import ProfileStatus from "./ProfileStatus";
+// import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -27,7 +28,7 @@ const ProfileInfo = (props) => {
           }
           alt="avatar"
         />
-        <ProfileStatus
+        <ProfileStatusWithHooks
           status={props.status}
           updateUserStatus={props.updateUserStatus}
         />
