@@ -9,7 +9,7 @@ import {
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
-const MyPosts = ({ postsData, addPostItem }) => {
+const MyPosts = React.memo(({ postsData, addPostItem }) => {
   const postsElements = postsData.map((item) => {
     return (
       <Post
@@ -32,7 +32,7 @@ const MyPosts = ({ postsData, addPostItem }) => {
       <div className={style.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 
 const maxLength30 = maxLengthCreator(30);
 const minLength2 = minLengthCreator(2);
