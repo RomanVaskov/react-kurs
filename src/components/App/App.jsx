@@ -13,16 +13,16 @@ import UserLogin from "../Login/Login";
 import { initializeApp } from "../../redux/app-reducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
-// import Preloader from "../../assets/img/spinner.svg";
+import Preloader from "../../assets/img/spinner.svg";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
   }
   render() {
-    // if (!this.props.initialized) {
-    //   return <img alt="img" src={Preloader} />;
-    // }
+    if (!this.props.initialized) {
+      return <img alt="img" src={Preloader} />;
+    }
     return (
       <div className={style.app_wrapper}>
         <HeaderContainer />

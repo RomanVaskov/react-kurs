@@ -25,14 +25,13 @@ export const setInitialized = () => {
   };
 };
 
-export const initializeApp = () => (dispatch) => {
-  authAPI.setAuthUser().then(data => {
-    if (data.resultCode === 0) {
-      Promise.all([dispatch(authUser())]).then(() => {
-        dispatch(setInitialized());
-      })
-    }
-  });
+export const initializeApp = () => async (dispatch) => {
+  let data = await authAPI.setAuthUser()
+  if (data.resultCode === 0) {
+    Promise.all([dispatch(authUser())]).then(() => {
+      dispatch(setInitialized());
+    })
+  }
 }
 
 export default appReducer;
