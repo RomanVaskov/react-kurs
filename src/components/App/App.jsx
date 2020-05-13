@@ -1,19 +1,20 @@
 import React from "react";
-import { Route, withRouter } from "react-router-dom";
+import { connect, Provider } from "react-redux";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { compose } from "redux";
+import Preloader from "../../assets/img/spinner.svg";
+import { initializeApp } from "../../redux/app-reducer";
+import store from "../../redux/redux-store";
 import DialogsContainer from "../Dialogs/DialogsContainer";
 import HeaderContainer from "../Header/HeaderContainer";
+import UserLogin from "../Login/Login";
 import Music from "../Music/Music";
 import Navbar from "../Navbar/Navbar";
 import News from "../News/News";
+import ProfileContainer from "../Profile/ProfileContainer";
 import Settings from "../Settings/Settings";
 import UsersContainer from "../Users/UsersContainer";
 import style from "./App.module.css";
-import ProfileContainer from "../Profile/ProfileContainer";
-import UserLogin from "../Login/Login";
-import { initializeApp } from "../../redux/app-reducer";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import Preloader from "../../assets/img/spinner.svg";
 
 class App extends React.Component {
   componentDidMount() {
@@ -67,7 +68,19 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default compose(
+let AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
+
+let ReactJsApp = () => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+
+export default ReactJsApp;

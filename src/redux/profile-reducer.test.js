@@ -1,4 +1,4 @@
-import profileReducer, { addPostItem, deletePostItem } from "./profile-reducer";
+import { profileReducer, addPostItem, deletePostItem } from './profile-reducer';
 
 let initialState = {
   postsData: [
