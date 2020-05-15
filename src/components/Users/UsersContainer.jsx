@@ -31,20 +31,17 @@ class UsersContainer extends Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? (
-          <img alt="img" src={Preloader} />
-        ) : (
-          <Users
-            totalUsersCount={this.props.totalUsersCount}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            onPageChange={this.onPageChange}
-            users={this.props.users}
-            unfollow={this.props.unfollow}
-            follow={this.props.follow}
-            followingProgress={this.props.followingProgress}
-          />
-        )}
+        {this.props.isFetching ? <img alt="img" src={Preloader} /> : null}
+        <Users
+          totalItemsCount={this.props.totalUsersCount}
+          pageSize={this.props.pageSize}
+          currentPage={this.props.currentPage}
+          onPageChange={this.onPageChange}
+          users={this.props.users}
+          unfollow={this.props.unfollow}
+          follow={this.props.follow}
+          followingProgress={this.props.followingProgress}
+        />
       </>
     );
   }

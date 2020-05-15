@@ -1,3 +1,23 @@
-.selectedPage {
-	font-weight: 800;
+.paginator {
+	margin: 10px;
+}
+
+.paginatorWraper {
+	margin: 10px 0 10px 10px;
+}
+
+.paginatorWraper button {
+	cursor: pointer;
+}
+
+.pageNumber {
+	padding: 2px;
+	border: 1px solid grey;
+	cursor: pointer;
+}
+
+.pageNumber.selectedPage {
+	font-weight: bold;
+	border-color: black;
+	cursor: pointer;
 }

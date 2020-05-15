@@ -1,5 +1,9 @@
-import { usersApi } from "../api/api";
-import { updateObjectInArray } from "../utils/object-helpers";
+import {
+  usersApi
+} from "../api/api";
+import {
+  updateObjectInArray
+} from "../utils/object-helpers";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -11,7 +15,7 @@ const FOLLOWING_PROGRESS = "FOLLOWING_PROGRESS";
 
 let initialState = {
   users: [],
-  pageSize: 5,
+  pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
@@ -24,42 +28,45 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.userId, "id", { followed: true })
+        users: updateObjectInArray(state.users, action.userId, "id", {
+          followed: true
+        })
       }
-    case UNFOLLOW:
-      return {
-        ...state,
-        users: updateObjectInArray(state.users, action.userId, "id", { followed: false })
-      }
-    case SET_USERS:
-      return {
-        ...state,
-        users: action.users
-      }
-    case SET_CURRENT_PAGE:
-      return {
-        ...state,
-        currentPage: action.currentPage
-      }
-    case SET_TOTAL_USERS_COUNT:
-      return {
-        ...state,
-        totalUsersCount: action.totalUsersCount
-      }
-    case CONTENT_LOADING:
-      return {
-        ...state,
-        isFetching: action.isFetching
-      }
-    case FOLLOWING_PROGRESS:
-      return {
-        ...state,
-        followingProgress: action.isFetching ?
-          [...state.followingProgress, action.userId] :
-          state.followingProgress.filter(id => id !== action.userId)
-      }
-    default:
-      return state;
+      case UNFOLLOW:
+        return {
+          ...state,
+          users: updateObjectInArray(state.users, action.userId, "id", {
+            followed: false
+          })
+        }
+        case SET_USERS:
+          return {
+            ...state,
+            users: action.users
+          }
+          case SET_CURRENT_PAGE:
+            return {
+              ...state,
+              currentPage: action.currentPage
+            }
+            case SET_TOTAL_USERS_COUNT:
+              return {
+                ...state,
+                totalUsersCount: action.totalUsersCount
+              }
+              case CONTENT_LOADING:
+                return {
+                  ...state,
+                  isFetching: action.isFetching
+                }
+                case FOLLOWING_PROGRESS:
+                  return {
+                    ...state,
+                    followingProgress: action.isFetching ? [...state.followingProgress, action.userId] :
+                      state.followingProgress.filter(id => id !== action.userId)
+                  }
+                  default:
+                    return state;
   }
 };
 
@@ -120,7 +127,7 @@ export const getUsers = (currentPage, pageSize) => {
     let data = await usersApi.getUsers(currentPage, pageSize)
     dispatch(setIsFetching(false));
     dispatch(setUsers(data.items));
-    dispatch(setTotalUsersCount(data.totalCount / 100));
+    dispatch(setTotalUsersCount(data.totalCount));
   }
 }
 
