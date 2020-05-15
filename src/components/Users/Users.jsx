@@ -3,7 +3,6 @@ import Pagination from "../common/paginator/Pagination";
 import User from "./User";
 
 let Users = (props) => {
-  console.log(props);
   return (
     <div>
       <Pagination {...props} />
