@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/react-kurs/static/css/main.15e8b294.chunk.css",
+    "main.js": "/react-kurs/static/js/main.4f99f2c2.chunk.js",
+    "main.js.map": "/react-kurs/static/js/main.4f99f2c2.chunk.js.map",
+    "runtime-main.js": "/react-kurs/static/js/runtime-main.166f7c05.js",
+    "runtime-main.js.map": "/react-kurs/static/js/runtime-main.166f7c05.js.map",
+    "static/js/2.a76bf1b6.chunk.js": "/react-kurs/static/js/2.a76bf1b6.chunk.js",
+    "static/js/2.a76bf1b6.chunk.js.map": "/react-kurs/static/js/2.a76bf1b6.chunk.js.map",
+    "static/css/3.36b97ff0.chunk.css": "/react-kurs/static/css/3.36b97ff0.chunk.css",
+    "static/js/3.8bdc66e2.chunk.js": "/react-kurs/static/js/3.8bdc66e2.chunk.js",
+    "static/js/3.8bdc66e2.chunk.js.map": "/react-kurs/static/js/3.8bdc66e2.chunk.js.map",
+    "index.html": "/react-kurs/index.html",
+    "precache-manifest.2352ba3e62301d05f36df0bad48571fa.js": "/react-kurs/precache-manifest.2352ba3e62301d05f36df0bad48571fa.js",
+    "service-worker.js": "/react-kurs/service-worker.js",
+    "static/css/3.36b97ff0.chunk.css.map": "/react-kurs/static/css/3.36b97ff0.chunk.css.map",
+    "static/css/main.15e8b294.chunk.css.map": "/react-kurs/static/css/main.15e8b294.chunk.css.map",
+    "static/js/2.a76bf1b6.chunk.js.LICENSE.txt": "/react-kurs/static/js/2.a76bf1b6.chunk.js.LICENSE.txt",
+    "static/js/3.8bdc66e2.chunk.js.LICENSE.txt": "/react-kurs/static/js/3.8bdc66e2.chunk.js.LICENSE.txt",
+    "static/media/spinner.svg": "/react-kurs/static/media/spinner.5289edaa.svg",
+    "static/media/user.png": "/react-kurs/static/media/user.6b20c1eb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.166f7c05.js",
+    "static/js/2.a76bf1b6.chunk.js",
+    "static/css/main.15e8b294.chunk.css",
+    "static/js/main.4f99f2c2.chunk.js"
+  ]
+}
