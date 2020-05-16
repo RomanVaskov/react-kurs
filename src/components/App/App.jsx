@@ -24,9 +24,9 @@ class App extends React.Component {
     this.props.initializeApp();
   }
   render() {
-    if (!this.props.initialized) {
-      return <img alt="img" src={Preloader} />;
-    }
+    // if (!this.props.initialized) {
+    //   return <img alt="img" src={Preloader} />;
+    // }
     return (
       <div className={style.app_wrapper}>
         <Suspense fallback={<img alt="img" src={Preloader} />}>
