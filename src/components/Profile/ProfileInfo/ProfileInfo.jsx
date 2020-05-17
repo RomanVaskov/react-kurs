@@ -6,37 +6,37 @@ import usersPhoto from "../../../assets/img/user.png";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
+  const onChangePhotoProfile = (e) => {
+    if (e.target.files.length) {
+      console.log(e.target.files[0]);
+      return props.profilePhoto(e.target.files[0]);
+    }
+  };
+
   if (!props.profile) {
     return <img alt="img" src={Preloader} />;
   }
+
   return (
     <div>
-      {/* <div>
-        <img
-          className={style.profile_img}
-          src="https://avatars.mds.yandex.net/get-pdb/872807/b0063fc9-3867-4519-afab-a58301f66aa7/s1200"
-          alt="Природа"
-        />
-      </div> */}
+      <img
+        className={style.userImg}
+        src={
+          !props.profile.photos.small ? usersPhoto : props.profile.photos.small
+        }
+        alt="avatar"
+      />
       <div>
-        <img
-          className={style.userImg}
-          src={
-            !props.profile.photos.small
-              ? usersPhoto
-              : props.profile.photos.small
-          }
-          alt="avatar"
-        />
-        <ProfileStatusWithHooks
-          status={props.status}
-          updateUserStatus={props.updateUserStatus}
-        />
-        <div>
-          <div>Name: {props.profile.fullName}</div>
-          <div>About Me: {props.profile.aboutMe}</div>
-          <div>About Job: {props.profile.lookingForAJobDescription}</div>
-        </div>
+        {props.isOwner && <input type="file" onChange={onChangePhotoProfile} />}
+      </div>
+      <ProfileStatusWithHooks
+        status={props.status}
+        updateUserStatus={props.updateUserStatus}
+      />
+      <div>
+        <div>Name: {props.profile.fullName}</div>
+        <div>About Me: {props.profile.aboutMe}</div>
+        <div>About Job: {props.profile.lookingForAJobDescription}</div>
       </div>
     </div>
   );

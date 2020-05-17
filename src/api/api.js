@@ -37,7 +37,11 @@ export const authAPI = {
     });
   },
   login(email, password, rememberMe = false) {
-    return instance.post("auth/login", { email, password, rememberMe });
+    return instance.post("auth/login", {
+      email,
+      password,
+      rememberMe
+    });
   },
   logout() {
     return instance.delete("auth/login");
@@ -56,7 +60,20 @@ export const profileAPI = {
     });
   },
   updateStatus(status) {
-    return instance.put(`profile/status`, { status: status }).then(response => {
+    return instance.put(`profile/status`, {
+      status: status
+    }).then(response => {
+      return response.data;
+    });
+  },
+  savePhoto(file) {
+    let formData = new FormData();
+    formData.append("image", file);
+    return instance.put(`profile/photo`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(response => {
       return response.data;
     });
   }
