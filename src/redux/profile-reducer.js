@@ -1,6 +1,7 @@
 import {
   profileAPI
 } from "../api/api";
+import { stopSubmit } from "redux-form";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
@@ -9,25 +10,25 @@ const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 
 let initialState = {
   postsData: [{
-      id: 1,
-      message: "Hello PHP",
-      likesCount: 10
-    },
-    {
-      id: 2,
-      message: "Hello PHP",
-      likesCount: 11
-    },
-    {
-      id: 3,
-      message: "Hello VUE",
-      likesCount: 15
-    },
-    {
-      id: 4,
-      message: "Hello REACT",
-      likesCount: 17
-    }
+    id: 1,
+    message: "Hello PHP",
+    likesCount: 10
+  },
+  {
+    id: 2,
+    message: "Hello PHP",
+    likesCount: 11
+  },
+  {
+    id: 3,
+    message: "Hello VUE",
+    likesCount: 15
+  },
+  {
+    id: 4,
+    message: "Hello REACT",
+    likesCount: 17
+  }
   ],
   profile: null,
   status: ""
@@ -46,35 +47,35 @@ const profileReducer = (state = initialState, action) => {
         postsData: [...state.postsData, newPost]
       }
 
-      case SET_USER_PROFILE:
-        return {
-          ...state,
-          profile: action.profile
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      }
+
+    case SET_STATUS:
+      return {
+        ...state,
+        status: action.status
+      }
+
+    case SAVE_PHOTO_SUCCESS:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          photos: action.photos
         }
+      }
 
-        case SET_STATUS:
-          return {
-            ...state,
-            status: action.status
-          }
+    case DELETE_POST:
+      return {
+        ...state,
+        postsData: state.postsData.filter(p => p.id !== action.postId)
+      }
 
-          case SAVE_PHOTO_SUCCESS:
-            return {
-              ...state,
-              profile: {
-                ...state.profile,
-                photos: action.photos
-              }
-            }
-
-            case DELETE_POST:
-              return {
-                ...state,
-                postsData: state.postsData.filter(p => p.id !== action.postId)
-              }
-
-              default:
-                return state;
+    default:
+      return state;
   }
 };
 
@@ -141,6 +142,21 @@ export const profilePhoto = (file) => {
     let response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0) {
       dispatch(savePhotoSuccess(response.data.photos));
+    }
+  }
+}
+
+export const saveProfile = (profile) => {
+  return async (dispatch, getState) => {
+    const userId = getState().auth.userId;
+    let response = await profileAPI.saveProfile(profile);
+    if (response.data.resultCode === 0) {
+      dispatch(getUserProfile(userId));
+    } else {
+      let message = response.messages.length > 0 ? response.messages[0] : "Some error"
+      let action = stopSubmit("profileDataForm", { _error: message });
+      dispatch(action);
+      return console.log(Promise.reject(message));
     }
   }
 }

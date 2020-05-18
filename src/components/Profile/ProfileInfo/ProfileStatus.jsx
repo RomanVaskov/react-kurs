@@ -39,6 +39,7 @@ class ProfileStatus extends Component {
       <>
         {!this.state.editMode ? (
           <div>
+            <b>Status: </b>
             <span onDoubleClick={this.activateEditMode}>
               {this.state.status || "Hello World"}
             </span>
