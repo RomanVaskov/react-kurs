@@ -30,24 +30,6 @@ export const usersApi = {
   }
 }
 
-export const authAPI = {
-  setAuthUser() {
-    return instance.get("auth/me").then(response => {
-      return response.data;
-    });
-  },
-  login(email, password, rememberMe = false) {
-    return instance.post("auth/login", {
-      email,
-      password,
-      rememberMe
-    });
-  },
-  logout() {
-    return instance.delete("auth/login");
-  }
-}
-
 export const profileAPI = {
   getUserProfile(userId) {
     return instance.get(`profile/` + userId).then(response => {
@@ -79,6 +61,33 @@ export const profileAPI = {
   },
   saveProfile(profile) {
     return instance.put(`profile`, profile).then(response => {
+      return response.data;
+    });
+  }
+}
+
+export const authAPI = {
+  setAuthUser() {
+    return instance.get("auth/me").then(response => {
+      return response.data;
+    });
+  },
+  login(email, password, rememberMe = false, captcha = null) {
+    return instance.post("auth/login", {
+      email,
+      password,
+      rememberMe,
+      captcha
+    });
+  },
+  logout() {
+    return instance.delete("auth/login");
+  }
+}
+
+export const securityAPI = {
+  getCaptchaUrl() {
+    return instance.get("security/get-captcha-url").then(response => {
       return response.data;
     });
   }

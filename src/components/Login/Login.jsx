@@ -36,6 +36,10 @@ const LoginForm = (props) => {
         />
         remember me
       </div>
+      {props.captchaUrl && <img src={props.captchaUrl} alt="captcha" />}
+      {props.captchaUrl && (
+        <Field name={"captcha"} component={Input} validate={[required]} />
+      )}
       {props.error && (
         <div className={style.formSummeryError}>{props.error}</div>
       )}
@@ -52,7 +56,12 @@ const LoginReduxForm = reduxForm({
 
 const UserLogin = (props) => {
   const onSubmit = (formData) => {
-    props.Login(formData.email, formData.password, formData.rememberMe);
+    props.Login(
+      formData.email,
+      formData.password,
+      formData.rememberMe,
+      formData.captcha
+    );
   };
 
   if (props.isAuth) {
@@ -62,13 +71,14 @@ const UserLogin = (props) => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
+    captchaUrl: state.auth.captchaUrl,
     isAuth: state.auth.isAuth,
   };
 };
