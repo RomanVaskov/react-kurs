@@ -1,4 +1,3 @@
-import { authAPI } from "../api/api";
 import { authUser } from "./auth-reducer";
 
 const SET_INITIALIZED = "SET_INITIALIZED";
@@ -25,12 +24,13 @@ export const setInitialized = () => {
   };
 };
 
-export const initializeApp = () => async (dispatch) => {
-  let data = await authAPI.setAuthUser()
-  if (data.resultCode === 0) {
+export const initializeApp = () => (dispatch) => {
+  try {
     Promise.all([dispatch(authUser())]).then(() => {
       dispatch(setInitialized());
     })
+  } catch (error) {
+    console.log(error)
   }
 }
 

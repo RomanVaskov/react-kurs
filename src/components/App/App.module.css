@@ -3,11 +3,23 @@
   grid-template-areas:
     "h h"
     "n c";
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 70px 1fr;
   grid-template-columns: 2fr 10fr;
 }
 
 .app_wrapper_content {
   grid-area: c;
   background-color: #ff8080;
+}
+
+.mainPreloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPreloader > img {
+  flex-grow: 0.25;
+  flex-shrink: 0.25;
+  flex-basis: auto;
 }

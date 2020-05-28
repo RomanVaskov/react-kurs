@@ -153,10 +153,19 @@ export const saveProfile = (profile) => {
     if (response.data.resultCode === 0) {
       dispatch(getUserProfile(userId));
     } else {
-      let message = response.messages.length > 0 ? response.messages[0] : "Some error"
-      let action = stopSubmit("profileDataForm", { _error: message });
-      dispatch(action);
-      return console.log(Promise.reject(message));
+      try {
+        let message = response.messages.length > 0 ? response.messages[0] : "Some error";
+        let action = stopSubmit("profileDataForm", { _error: message });
+        dispatch(action);
+        try {
+          return Promise.reject(new Error(message));
+        } catch (error) {
+          throw error
+        }
+      } catch (error) {
+        console.error(error)
+      }
+
     }
   }
 }

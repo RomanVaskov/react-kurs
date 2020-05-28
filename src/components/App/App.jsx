@@ -20,13 +20,24 @@ const UsersContainer = React.lazy(() => {
 });
 
 class App extends React.Component {
+  catchAllUnhandledRejection = (event) => {
+    console.error(event.reason);
+  }
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledRejection)
+  }
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledRejection)
   }
   render() {
-    // if (!this.props.initialized) {
-    //   return <img alt="img" src={Preloader} />;
-    // }
+    if (!this.props.initialized) {
+      return (
+        <div className={style.mainPreloader}>
+          <img alt="img" src={Preloader} />
+        </div>
+      )
+    }
     return (
       <div className={style.app_wrapper}>
         <Suspense fallback={<img alt="img" src={Preloader} />}>

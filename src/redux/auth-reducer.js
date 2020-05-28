@@ -43,7 +43,7 @@ export const getCaptchaUrlSuccess = (captchaUrl) => {
 };
 
 export const authUser = () => async (dispatch) => {
-  let data = await authAPI.setAuthUser()
+  let data = await authAPI.setAuthUser();
   if (data.resultCode === 0) {
     let { id, email, login } = data.data;
     dispatch(setAuthUserData(id, email, login, true));

@@ -49,8 +49,8 @@ const ProfileInfo = (props) => {
           initialValues={props.profile}
         />
       ) : (
-        <ProfileData {...props} goToEditMode={() => setEditMode(true)} />
-      )}
+          <ProfileData {...props} goToEditMode={() => setEditMode(true)} />
+        )}
     </div>
   );
 };
