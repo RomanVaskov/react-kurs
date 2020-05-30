@@ -31,13 +31,13 @@ class App extends React.Component {
     window.removeEventListener("unhandledrejection", this.catchAllUnhandledRejection)
   }
   render() {
-    if (!this.props.initialized) {
-      return (
-        <div className={style.mainPreloader}>
-          <img alt="img" src={Preloader} />
-        </div>
-      )
-    }
+    // if (!this.props.initialized) {
+    //   return (
+    //     <div className={style.mainPreloader}>
+    //       <img alt="img" src={Preloader} />
+    //     </div>
+    //   )
+    // }
     return (
       <div className={style.app_wrapper}>
         <Suspense fallback={<img alt="img" src={Preloader} />}>
